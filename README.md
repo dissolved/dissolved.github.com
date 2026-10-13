@@ -24,6 +24,14 @@ fragments, images, and local assets. It does not check external sites.
 Use `bundle update` to refresh dependencies and commit `Gemfile.lock` with any
 dependency changes.
 
+Analytics use hosted GoatCounter at `https://dissolved.goatcounter.com`.
+The `goatcounter` setting in `_config.yml` is the public counting endpoint; leave
+it blank to disable analytics. The script is included only when
+`JEKYLL_ENV=production`, and automatic tracking is disabled on hostnames other than
+the production hostname in `url`. Normal local previews do not load the tracker.
+After deployment, verify a pageview in the GoatCounter dashboard using a browser
+that allows its script. Local builds do not verify live data collection.
+
 The workflow in `.github/workflows/pages.yml` builds pull requests targeting
 `master`. Pushes to `master` build and deploy the site; it can also be run manually
 from `master`. Builds use the Ruby version in `.tool-versions` and the Bundler

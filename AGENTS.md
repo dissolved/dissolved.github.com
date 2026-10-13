@@ -86,10 +86,20 @@ Also provide editorial support, accessibility review, and practical site mainten
 - Keep internal guidance and build tooling out of the published site. Do not use
   AGENTS.md as reader-facing content.
 
+## Analytics direction
+
+Use hosted GoatCounter for the blog. Ryan prefers no analytics subscription or
+additional self-hosted service at this time. A shared tool for other projects,
+including the planned Backstash and Tabometer Firefox extensions, would be useful,
+but do not add complexity for hypothetical requirements. Reevaluate Umami or other
+options when a concrete measurement need is limited by GoatCounter. Treat website
+analytics and telemetry inside extensions as separate decisions; choosing blog
+analytics does not authorize collecting extension-user data.
+
 ## Known housekeeping to revisit
 
-Refresh About and site positioning; review the three historical posts; remove or
-replace retired Universal Analytics and reassess Disqus; consolidate duplicate
+Refresh About and site positioning; review the three historical posts; reassess
+Disqus; consolidate duplicate
 metadata; improve accessibility and template markup; compress the large avatar;
 trim unused theme assets, funding configuration, and the old communication page;
 migrate deprecated Sass imports. Reassess priorities with Ryan rather than treating

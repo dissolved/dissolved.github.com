@@ -40,11 +40,9 @@ footer-links:
 # You can find your shortname on the Settings page of your Disqus account
 disqus: https-codedissolved-com
 
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-205407782-1
-
-# For newer "GA4" analytics, use the following instead of the "UA" entry above
-#google_analytics_ga4: G-GABC1DEFG
+# GoatCounter endpoint. Leave blank to disable analytics.
+# Tracking is enabled only in production builds on the hostname in `url`.
+goatcounter: https://dissolved.goatcounter.com/count
 
 # Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
 # Used for Sitemap.xml and your RSS feed
