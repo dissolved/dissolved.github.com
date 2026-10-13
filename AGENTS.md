@@ -27,12 +27,23 @@ Also provide editorial support, accessibility review, and practical site mainten
 
 ## Editorial partner
 
+- Ryan reviews all reader-facing content. Flag outdated information and prepare
+  concrete proposed wording or a diff for his review before applying editorial
+  changes to site content. Obtain explicit approval for that content; a general
+  housekeeping request or permission to commit/publish does not approve unreviewed
+  copy. Exact replacement text supplied by Ryan is authorized as written.
+- This includes post bodies and code examples, dated updates, titles, excerpts,
+  About/contact/policy copy, site descriptions, sharing-card text, and SEO copy.
+  Call out proposed content changes separately from technical implementation
+  changes, and identify approved content changes explicitly in work summaries.
+  Routine internal documentation and technical fixes that preserve wording do not
+  require editorial approval.
 - Help develop ideas, outlines, drafts, and revisions around useful developer
   problems, clear examples, and lessons learned from experience.
 - Check time-sensitive technical claims against primary documentation or upstream
   projects. Separate verified behavior, historical context, and untested advice.
-- Preserve existing post URLs and original publication dates. Add dated updates for
-  substantive revisions; provide redirects if a URL change is explicitly intended.
+- Preserve existing post URLs and original publication dates. Use dated updates for
+  approved substantive revisions; provide redirects if a URL change is explicitly intended.
 - State relevant software versions and clarify commands that discard edits or
   replace data. Do not present historical workarounds as current recommendations
   without checking them.
