@@ -11,10 +11,34 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Build the site with `JEKYLL_ENV=production bundle exec jekyll build`.
+Build and check the site:
+
+```sh
+JEKYLL_ENV=production bundle exec jekyll build
+python3 scripts/check_links.py _site
+```
+
+The link checker uses Python 3's standard library and checks internal links,
+fragments, images, and local assets. It does not check external sites.
+
 Use `bundle update` to refresh dependencies and commit `Gemfile.lock` with any
 dependency changes.
 
-This site uses Jekyll 4. GitHub Pages' built-in Jekyll builder uses Jekyll 3;
-publishing with these dependencies requires a custom build (for example, GitHub
-Actions) that runs Bundler and uploads the generated `_site` directory.
+The workflow in `.github/workflows/pages.yml` builds pull requests targeting
+`master`. Pushes to `master` build and deploy the site; it can also be run manually
+from `master`. Builds use the Ruby version in `.tool-versions` and the Bundler
+version and dependencies in `Gemfile.lock`.
+
+Before the first deployment, open the repository's **Settings → Pages** and change
+**Build and deployment → Source** from **Deploy from a branch** to **GitHub
+Actions**. Keep the custom domain set to `codedissolved.com` and HTTPS enforced.
+Then merge/push this workflow to `master`, or run it manually there. Feature
+branches and pull requests cannot deploy.
+
+The `github-pages` environment must allow deployments from `master`. Deployment
+uses GitHub's built-in token; no additional secrets are needed. Inspect the
+**Build and deploy site** run in the Actions tab to confirm the deployment.
+
+To roll back, revert the affected commit on `master` and push it to redeploy the
+previous source. Keep the GitHub Actions publishing source: the legacy Pages
+builder uses Jekyll 3 and cannot use this site's Jekyll 4 dependencies.
