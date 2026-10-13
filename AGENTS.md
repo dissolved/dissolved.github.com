@@ -96,14 +96,22 @@ options when a concrete measurement need is limited by GoatCounter. Treat websit
 analytics and telemetry inside extensions as separate decisions; choosing blog
 analytics does not authorize collecting extension-user data.
 
-## Known housekeeping to revisit
+## Comments and contact
 
-Refresh About and site positioning; review the three historical posts; reassess
-Disqus; consolidate duplicate
-metadata; improve accessibility and template markup; compress the large avatar;
-trim unused theme assets, funding configuration, and the old communication page;
-migrate deprecated Sass imports. Reassess priorities with Ryan rather than treating
-this list as automatic authorization to change everything.
+Use giscus backed by this repository's GitHub Discussions. Ryan confirmed there
+were no Disqus comments to preserve. Keep discussion mapping based on post paths.
+Ryan prefers not to publish an email address because of spam; do not add mailto
+links or a contact service without discussing that choice with him.
+
+## Remaining branding work
+
+Ryan does not want an avatar or headshot to be a requirement. Use the text masthead
+and typographic sharing card as the current visual identity; do not add a face or
+replacement avatar without a new direction from him.
+The current About page and description are a factual starting point, not finalized
+brand positioning. Clarify audience and professional goals before making stronger
+claims or commitments. Keep dated historical context in the existing posts rather than implying
+their old workarounds were retested against current software.
 
 ## Maintain this agreement
 

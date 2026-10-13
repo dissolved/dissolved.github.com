@@ -2,23 +2,17 @@
 layout: page
 permalink: /categories/
 title: Categories
+description: Browse Code Dissolved posts by software development topic.
 ---
 
-
-<div id="archives">
-{% for category in site.categories %}
-  <div class="archive-group">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
-    <div id="#{{ category_name | slugize }}"></div>
-    <p></p>
-    
-    <h3 class="category-head">{{ category_name }}</h3>
-    <a name="{{ category_name | slugize }}"></a>
-    {% for post in site.categories[category_name] %}
-    <article class="archive-item">
-      <h4><a href="{{ site.baseurl }}{{ post.url }}">{% if post.title and post.title != "" %}{{post.title}}{% else %}{{post.excerpt |strip_html}}{%endif%}</a></h4>
-    </article>
+{% assign categories = site.categories | sort %}
+{% for category in categories %}
+<section class="archive-group" aria-labelledby="{{ category[0] | slugify }}">
+  <h2 id="{{ category[0] | slugify }}">{{ category[0] | escape }}</h2>
+  <ul>
+    {% for post in category[1] %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
     {% endfor %}
-  </div>
+  </ul>
+</section>
 {% endfor %}
-</div>

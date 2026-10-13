@@ -1,12 +1,14 @@
 ---
 layout: default
+title: Code Dissolved
 ---
 
+<h1 class="visually-hidden">Software development notes</h1>
 <div class="posts">
   {% for post in paginator.posts %}
     <article class="post">
       <a href="{{ site.baseurl }}{{ post.url }}">
-        <h1>{{ post.title }}</h1>
+        <h2 class="post-title">{{ post.title | escape }}</h2>
 
         <div>
           <p class="post_date">{{ post.date | date: "%B %e, %Y" }}</p>
@@ -16,7 +18,7 @@ layout: default
         {{ post.excerpt }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more<span class="visually-hidden">: {{ post.title | escape }}</span></a>
     </article>
   {% endfor %}
 
