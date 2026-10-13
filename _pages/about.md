@@ -2,12 +2,15 @@
 layout: page
 title: About
 permalink: /about/
+description: Ryan Sandridge's notes on software development, debugging, and practical solutions.
 ---
 
-Hi, here is another coding blog. I don't know how many blogs I've started and abandoned over the years, but its probably double digits (or nearly). I have no idea if this will stick this time, so set your expectations low. I basically wanted a way to share stuff that I was stuck on while developing and had difficulty finding posts to help me get unstuck.
+I'm Ryan Sandridge. I've been writing code for several decades, and I'm still learning.
 
-I make no promises that it will be interesting, nor timely, nor around in the future (that's what the [Internet Archive](https://archive.org/) is for).
+Code Dissolved is where I share problems I've worked through while developing software—especially the ones where finding a useful explanation took longer than it should have. Expect debugging notes, practical examples, and the reasoning behind a fix.
 
-Here is some meta information. This is a blog, hosted on [Github Pages](https://pages.github.com/), using [Markdown](https://www.markdownguide.org/) and [Jekyll](https://jekyllrb.com/). I'm using the [Reverie theme](https://github.com/amitmerchant1990/reverie) (because you don't want to see me try to design a theme).
+The posts here cover work with Ruby and Rails, Python, and developer tools. Older articles describe the software and circumstances at the time; I add dated updates when the advice changes.
 
-Oh, and who am I? I'm Ryan, just a guy who has been writing code for several decades. I know some stuff, but still a ton I don't know.
+You can find me on [GitHub](https://github.com/dissolved) and [LinkedIn](https://www.linkedin.com/in/ryansandridge). Questions and corrections are welcome in the GitHub discussions beneath each post.
+
+This site is built with [Jekyll](https://jekyllrb.com/), using a locally maintained theme based on [Reverie](https://github.com/amitmerchant1990/reverie), and published through GitHub Actions to [GitHub Pages](https://pages.github.com/).

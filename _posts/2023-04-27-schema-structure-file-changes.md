@@ -2,17 +2,22 @@
 layout: post
 title: Why Does schema.rb (or structure.sql) Have Unexpected Changes?
 categories: [Rails]
+last_modified_at: 2026-10-13
+excerpt: "Switching Git branches does not switch your database. Here is why Rails schema files pick up unexpected changes and how to bring a local development database back into sync."
+description: Why Rails schema files change across branches and how to bring a local development database back into sync.
 ---
 
-For years I've seen people new to Rails get confused about why their `schema.rb` or `structure.sql` files have unexpected changes in them, particularly when the engineer is new to working on a Rails project in a team environment. Let's put this mystery to rest. In this post, I'll explain reasons why this happens, what to do when it happens, and recommended practices to avoid commiting (or forgetting to commit) the necessary changes to these files.
+> **Update — October 13, 2026:** The examples below reflect the original Rails environment. The reset instructions now restore only the schema file and explicitly target development. Schema loading can replace tables and discard data; use it only with a disposable local database. Current Rails uses `db:schema:load` for both schema formats, according to the configured `schema_format`.
+
+For years I've seen people new to Rails get confused about why their `schema.rb` or `structure.sql` files have unexpected changes in them, particularly when the engineer is new to working on a Rails project in a team environment. Let's put this mystery to rest. In this post, I'll explain reasons why this happens, what to do when it happens, and recommended practices to avoid committing (or forgetting to commit) the necessary changes to these files.
 
 For the purposes of this post, anything I say about `schema.rb` file applies also to `structure.sql` file, unless explicitly stated otherwise.
 
 ## Why Does This Happen?
 
-In short, this happens because when you migrate your database, Rails will do more than simply apply new migrations to your database. Rails rewrites `schema.rb` to [match the existing database schema](https://guides.rubyonrails.org/active_record_migrations.html#what-are-schema-files-for-questionmark) everytime you migrate (including if there are no migrations to run). You don't have to be working on a team to run into this scenario, though it happens more often and is more problematic if you are collaborating on a team.
+In short, this happens because when you migrate your database, Rails will do more than simply apply new migrations to your database. Rails rewrites `schema.rb` to [match the existing database schema](https://guides.rubyonrails.org/active_record_migrations.html#what-are-schema-files-for-questionmark) every time you migrate (including if there are no migrations to run). You don't have to be working on a team to run into this scenario, though it happens more often and is more problematic if you are collaborating on a team.
 
-In a freshly created Rails app with a clean git history, lets switch to a feature branch, generate a migration, and migrate the database:
+In a freshly created Rails app with a clean git history, let's switch to a feature branch, generate a migration, and migrate the database:
 
 ```bash
 $ git checkout -b create_products_table
@@ -43,7 +48,7 @@ As a result of the above, you should now have a new migration file in the `db/mi
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_195608) do
+ActiveRecord::Schema.define(version: 2022_02_02_222222) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -66,7 +71,7 @@ $ git add db/migrate/20220202222222_create_products.rb db/schema.rb
 $ git commit -m "adding products table"
 ```
 
-Now, imagine your collegue asks for your help debugging an issue that is currently happening in production, and you check out the latest version of the main branch to run your app locally. But there have been other migrations added since you last checked out. You might do something like this:
+Now, imagine your colleague asks for your help debugging an issue that is currently happening in production, and you check out the latest version of the main branch to run your app locally. But there have been other migrations added since you last checked out. You might do something like this:
 
 ```
 $ git checkout main
@@ -109,7 +114,7 @@ index 48142da..2cf67f2 100644
 +++ b/db/schema.rb
 @@ -12,6 +12,10 @@
 
- ActiveRecord::Schema.define(version: 2022_02_08_220908) do
+ ActiveRecord::Schema.define(version: 2022_02_08_080808) do
 
 +  create_table "products", force: :cascade do |t|
 +    t.string "name"
@@ -126,24 +131,24 @@ So this should explain the "why does this happen" sufficiently. It isn't always 
 
 ## What Should I Do Now?
 
-In most cases you'll want your `schema.rb` file to have only the things in it that were added by migrations present in the current branch. One way to fix the issue is to manually remove the lines from `schema.rb` that were introduced by migrations not present on the current branch, but this can sometimes be hard to identify, or at least subject to human error. But for some simple situations, by all means edit it manually.
+In most cases you'll want your `schema.rb` file to have only the things in it that were added by migrations present in the current branch. One way to change the committed schema is to manually remove the lines from `schema.rb` that were introduced by migrations not present on the current branch, but this can sometimes be hard to identify, or at least subject to human error. Editing the schema file alone does not change your database; a later dump can reintroduce the mismatch. Prefer bringing the database into the intended state and regenerating its schema.
 
-Alternatively, you if you haven't yet made any other changes to the current branch, you could simply clean the directory, load the committed schema, and move on.
+Alternatively, restore the committed schema file and load it into a disposable local development database. First commit or stash any schema edits you need to keep. The restore command discards edits to that file, and loading the schema can replace tables and discard their data; back up anything you need before proceeding.
 
 ```bash
-$ git restore .
-$ bin/rails db:schema:load
+$ git restore db/schema.rb
+$ RAILS_ENV=development bin/rails db:schema:load
 ```
 
 If you've already been hacking away, and already added a new migration file for your current work, you could explicitly restore just the schema file, load that schema, and run your migrations.
 
 ```bash
 $ git restore db/schema.rb
-$ bin/rails db:schema:load
-$ bin/rails db:migrate
+$ RAILS_ENV=development bin/rails db:schema:load
+$ RAILS_ENV=development bin/rails db:migrate
 ```
 
-And now both your database and your `schema.rb` file should be in sync and properly reflect the state you want on your current branch. If you're using `structure.sql` instead, you'd use `bin/rails db:structure:load` instead to load the schema into your database.
+And now both your database and your `schema.rb` file should be in sync and properly reflect the state you want on your current branch. If you're using `structure.sql`, restore `db/structure.sql` instead. In current Rails, `db:schema:load` uses the format selected by `config.active_record.schema_format`. Older Rails versions exposed `db:structure:load` separately; check the tasks available in your app with `bin/rails -T db`.
 
 ## How To Prevent This?
 
