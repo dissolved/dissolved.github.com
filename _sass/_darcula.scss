@@ -1,5 +1,7 @@
+@use "variables" as *;
+
 .highlight {
-    background-color: #1e1c3f;
+    background-color: $navy;
     padding: 7px 7px 7px 10px;
     overflow: auto;
     font-size: 95%;
@@ -11,13 +13,13 @@ code {
 }
 
 .highlighter-rouge {
-    background-color: #FAFAFA;
-    color: #a12c22;
+    background-color: $mintTint;
+    color: $teal;
     font-size: 16px;
 }
 
 .highlight .hll { background-color: #f1fa8c }
-.highlight  { background: #282a36; color: #f8f8f2 }
+.highlight  { background: $navy; color: #f8f8f2 }
 .highlight .c { color: #a0acd0 } /* Comment */
 .highlight .err { color: #f8f8f2 } /* Error */
 .highlight .g { color: #f8f8f2 } /* Generic */

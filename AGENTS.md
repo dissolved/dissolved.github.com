@@ -127,6 +127,8 @@ links or a contact service without discussing that choice with him.
 Ryan does not want an avatar or headshot to be a requirement. Use the text masthead
 and typographic sharing card as the current visual identity; do not add a face or
 replacement avatar without a new direction from him.
+Use the extensions' shared navy (`#233752`) and mint (`#7DD9B5`) palette for the
+site and sharing card. Keep mint accents readable with dark text.
 The current About page and description are a factual starting point, not finalized
 brand positioning. Clarify audience and professional goals before making stronger
 claims or commitments. Keep dated historical context in the existing posts rather than implying

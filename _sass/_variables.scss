@@ -3,15 +3,19 @@
 // VARIABLES
 //
 
-// Colors
-$blue: #245b91;
+// Shared Backstash / Tabometer icon palette.
+$navy: #233752;
+$mint: #7dd9b5;
+$mintTint: #edf8f3;
+$teal: #115e59;
+$border: #d7e2df;
 
 // Grays
 $black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
+$darkerGray: $navy;
+$darkGray: $navy;
+$gray: #52696b;
+$lightGray: $mintTint;
 $white: #fff;
 
 // Font stacks
