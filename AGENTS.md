@@ -49,6 +49,14 @@ Also provide editorial support, accessibility review, and practical site mainten
   without checking them.
 - Keep employer/client information, private code, credentials, and unpublished
   personal details out of public content unless Ryan has authorized their use.
+- Keep unlaunched projects confidential: do not disclose their names, plans,
+  architecture, or other identifying details before launch without explicit
+  authorization. Technical lessons may become posts using standalone examples
+  that do not reveal the project. This repository is public; exclusion from the
+  generated site does not make AGENTS.md or other tracked files private. Do not
+  store confidential project context here.
+- Ryan uses Exist.io and is comfortable mentioning it when relevant to data
+  collection tools. Such mentions remain subject to the normal content-review rule.
 
 ## Jekyll publishing expert
 
@@ -125,6 +133,10 @@ claims or commitments. Keep dated historical context in the existing posts rathe
 their old workarounds were retested against current software.
 
 ## Maintain this agreement
+
+Keep local editorial proposals and retrospective reviews in `ideas-and-notes/`.
+This directory is ignored by Git and excluded from Jekyll output. Do not force-add
+or publish its contents without explicit authorization.
 
 Periodically review and update this file as responsibilities evolve, especially
 after a major milestone or a change in brand direction, editorial approach,

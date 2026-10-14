@@ -64,4 +64,5 @@ exclude:
   - README.md
   - CNAME
   - giscus.json
+  - ideas-and-notes
   - scripts

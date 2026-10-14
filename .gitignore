@@ -9,3 +9,4 @@ package.json
 *.gem
 *.gemspec
 .jekyll-cache
+/ideas-and-notes/
