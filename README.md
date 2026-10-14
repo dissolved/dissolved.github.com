@@ -51,20 +51,20 @@ screenshot to the image path. Individual posts can override `image` and
 `last_modified_at` for substantive updates.
 
 The workflow in `.github/workflows/pages.yml` builds pull requests targeting
-`master`. Pushes to `master` build and deploy the site; it can also be run manually
-from `master`. Builds use the Ruby version in `.tool-versions` and the Bundler
+`main`. Pushes to `main` build and deploy the site; it can also be run manually
+from `main`. Builds use the Ruby version in `.tool-versions` and the Bundler
 version and dependencies in `Gemfile.lock`.
 
 Before the first deployment, open the repository's **Settings → Pages** and change
 **Build and deployment → Source** from **Deploy from a branch** to **GitHub
 Actions**. Keep the custom domain set to `codedissolved.com` and HTTPS enforced.
-Then merge/push this workflow to `master`, or run it manually there. Feature
+Then merge/push this workflow to `main`, or run it manually there. Feature
 branches and pull requests cannot deploy.
 
-The `github-pages` environment must allow deployments from `master`. Deployment
+The `github-pages` environment must allow deployments from `main`. Deployment
 uses GitHub's built-in token; no additional secrets are needed. Inspect the
 **Build and deploy site** run in the Actions tab to confirm the deployment.
 
-To roll back, revert the affected commit on `master` and push it to redeploy the
+To roll back, revert the affected commit on `main` and push it to redeploy the
 previous source. Keep the GitHub Actions publishing source: the legacy Pages
 builder uses Jekyll 3 and cannot use this site's Jekyll 4 dependencies.

@@ -61,8 +61,8 @@ Also provide editorial support, accessibility review, and practical site mainten
 - `_posts` contains articles; `_pages` contains supporting pages. Shared templates
   live in `_layouts` and `_includes`; styles live in `assets/style.scss` and `_sass`.
   `_config.yml` owns site configuration. Never hand-edit generated `_site` output.
-- `.github/workflows/pages.yml` builds pull requests targeting `master` and deploys
-  only from `master`. Use the locked dependencies in CI. Preserve the custom domain,
+- `.github/workflows/pages.yml` builds pull requests targeting `main` and deploys
+  only from `main`. Use the locked dependencies in CI. Preserve the custom domain,
   HTTPS, and working URLs when changing publishing configuration.
 - Follow README.md for installation, preview, publishing activation, and rollback.
   Keep it synchronized with changes. Verify remote Pages settings and deployment
